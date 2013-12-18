@@ -27,3 +27,41 @@ Then(/^I should see the (top|bottom) text field has "([^"]*)"$/) do |field, text
   2.times { step_pause }
 end
 
+
+When(/^I type an email into the text field it should appear correctly$/) do
+
+end
+
+
+
+Then(/^I type (\d+) email addresses into the text field$/) do |num|
+  tf_id = 'top tf'
+  touch("textField marked:'#{tf_id}'")
+  await_keyboard
+
+  num.to_i.times {
+    email = ''
+    50.enum_for(:times).inject(email) do |result, index|
+      sample = [*32..126].sample.chr
+      sample = '@' if sample.eql?('(') or sample.eql?(')')
+      sample = '!' if sample.eql?(':')
+      sample = '?' if sample.eql?(';')
+      sample = '€' if sample.eql?('\\')
+      sample = '?' if sample.eql?(',')
+      email << sample
+    end
+
+
+
+    #email = Faker::Internet.email
+    #tokens = email.split('@')
+    #num = [*0..3030].sample
+    #name = "#{tokens.first}#{num}".chars.shuffle().join('')
+    #email = "#{name}@#{tokens[1]}"
+
+    keyboard_enter_text email
+    should_see_text_field_with_text tf_id, email
+    clear_text("view marked:'#{tf_id}'")
+    step_pause
+  }
+end

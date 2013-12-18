@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="pluto" type="CucumberRunConfigurationType" factoryName="Cucumber">
+  <configuration default="false" name="pluto ADHOC" type="CucumberRunConfigurationType" factoryName="Cucumber">
     <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
     <module name="features" />
     <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
@@ -35,6 +35,8 @@
     <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
     <RunnerSettings RunnerId="RubyRunner" />
     <ConfigurationWrapper RunnerId="RubyRunner" />
-    <method />
+    <method>
+      <option name="RakeTask" enabled="false" TASK_CMD="show_simulator" />
+    </method>
   </configuration>
 </component>
